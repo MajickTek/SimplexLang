@@ -34,7 +34,7 @@ public class Parser {
 
         if (left.equalsIgnoreCase(kwd.PARSE.toString())) {
             printTree();
-        } //debug, call with parse==>>
+        } //debug, call with parse=>>
 
         if (right.equalsIgnoreCase(kwd.NULL.toString())) {
             System.out.println("NULL");
