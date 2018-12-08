@@ -53,7 +53,8 @@ public class FileIO {
                     + "print=>test is complete\n"
                     + "getvar=>x\n"
                     + "debug=>listVarMap\n"
-                    + "getsysprop=>os.name\ngetsysprop=>os.version";
+                    + "getsysprop=>os.name\ngetsysprop=>os.version"
+                    + "getsysprop=>all";
             writer.write(program);
             writer.close();
         }

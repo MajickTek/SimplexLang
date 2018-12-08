@@ -90,5 +90,8 @@ public class Parser {
         if(left.equalsIgnoreCase(kwd.GETSYSTEMPROPERTY.toString())) {
             System.out.println(System.getProperty(right));
         }
+        if(left.equalsIgnoreCase(kwd.GETSYSTEMENV.toString())) {
+            System.out.println(System.getenv(right));
+        }
     }
 }

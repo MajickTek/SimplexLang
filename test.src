@@ -3,4 +3,4 @@ print=>test is complete
 getvar=>x
 debug=>listVarMap
 getsysprop=>os.name
-getsysprop=>os.version
+getsysprop=>os.versiongetsysprop=>all
