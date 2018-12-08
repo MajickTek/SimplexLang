@@ -26,7 +26,7 @@ public class Parser {
     private static ScriptEngineManager mgr = new ScriptEngineManager();
     private static ScriptEngine engine = mgr.getEngineByName("JavaScript");
     
-    private static double result = 0.0;
+    
     public static void parseLine(String s) {
         /*
         syntax:
@@ -59,8 +59,8 @@ public class Parser {
         }
         if (left.equalsIgnoreCase(kwd.EVAL.toString())) {
             try {
-                result = (Double) engine.eval(right);
-                System.out.println(result);
+                
+                System.out.println(engine.eval(right));
             } catch (ScriptException ex) {
                 Logger.getLogger(Parser.class.getName()).log(Level.SEVERE, null, ex);
             }
