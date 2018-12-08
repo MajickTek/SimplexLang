@@ -19,7 +19,8 @@ public enum Keywords { // helps me organize the main keywords, this is not defin
     NULL(">"),
     GETSYSTEMPROPERTY("getsysprop"),
     GETSYSTEMENV("getsysenv"),
-    EVAL("eval");
+    EVAL("eval"),
+    MATHVAR("mathvar")
     ;
 
     private final String text;

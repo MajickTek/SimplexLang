@@ -60,6 +60,11 @@ public class Parser {
         if (left.equalsIgnoreCase(kwd.EVAL.toString())) {
             System.out.println(doJSEval(right));
         }
+        if(left.equalsIgnoreCase(kwd.MATHVAR.toString())) {
+            String[] parameter = right.split(",");
+            String test = doJSEval(parameter[1]);
+            VariableEngine.insert(parameter[0], test);
+        }
         if (debugEnabled == true) {
             doDebug(s);
             doGetSystemProperty(s);
