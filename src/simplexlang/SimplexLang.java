@@ -32,7 +32,7 @@ public class SimplexLang {
     public static void main(String[] args) {
         
         try {
-            Parser.debugEnabled = true;
+            Parser.debugEnabled = false;
             FileIO.createTestFile("test.src");
             FileIO.readFile("test.src");
         } catch (FileNotFoundException ex) {
