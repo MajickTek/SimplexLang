@@ -5,6 +5,11 @@
  */
 package simplexlang.parser;
 
+import java.util.logging.Level;
+import java.util.logging.Logger;
+import javax.script.ScriptEngine;
+import javax.script.ScriptEngineManager;
+import javax.script.ScriptException;
 import simplexlang.variables.VariableEngine;
 
 /**
@@ -17,7 +22,11 @@ public class Parser {
     public static boolean debugEnabled = false;
     private static Keywords kwd = null;
     private static String delimiterregex = kwd.OPERATOR.toString();
-
+    
+    private static ScriptEngineManager mgr = new ScriptEngineManager();
+    private static ScriptEngine engine = mgr.getEngineByName("JavaScript");
+    
+    private static double result = 0.0;
     public static void parseLine(String s) {
         /*
         syntax:
@@ -26,7 +35,7 @@ public class Parser {
         if text equals op1 then do something with op2
          */
 
-         cmd = s.split(delimiterregex); //operator between command and parameter
+        cmd = s.split(delimiterregex); //operator between command and parameter
         String left = cmd[0];//command
         String right = cmd[1];//parameter
 
@@ -48,7 +57,14 @@ public class Parser {
         if (left.equalsIgnoreCase(kwd.GETVAR.toString())) {
             System.out.println(VariableEngine.getKeyValue(right));
         }
-        
+        if (left.equalsIgnoreCase(kwd.EVAL.toString())) {
+            try {
+                result = (Double) engine.eval(right);
+                System.out.println(result);
+            } catch (ScriptException ex) {
+                Logger.getLogger(Parser.class.getName()).log(Level.SEVERE, null, ex);
+            }
+        }
         if (debugEnabled == true) {
             doDebug(s);
             doGetSystemProperty(s);
@@ -74,9 +90,9 @@ public class Parser {
             if (right.equalsIgnoreCase("listVarMap")) {
                 VariableEngine.showDebugDisplay();
             }
-           
+
         }
-        
+
     }
 
     private static void doGetSystemProperty(String s) {
@@ -94,5 +110,6 @@ public class Parser {
             System.out.println(System.getenv(right));
         }
     }
+
 
 }

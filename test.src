@@ -5,4 +5,4 @@ debug=>listVarMap
 getsysprop=>os.name
 getsysprop=>os.version
 getsysprop=>all
-setvar=>y,1add=>y,1getvar=>y
+eval=>1+2

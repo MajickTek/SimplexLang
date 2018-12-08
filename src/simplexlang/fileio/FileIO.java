@@ -55,6 +55,7 @@ public class FileIO {
                     + "debug=>listVarMap\n"
                     + "getsysprop=>os.name\ngetsysprop=>os.version\n"
                     + "getsysprop=>all\n"
+                    + "eval=>1+2"
                     ;
             writer.write(program);
             writer.close();
