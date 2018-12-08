@@ -90,6 +90,9 @@ public class Parser {
         if (left.equalsIgnoreCase(kwd.GETVAR.toString())) {
             System.out.println(VariableEngine.getKeyValue(right));
         }
+        if(left.equalsIgnoreCase(kwd.EVAL.toString())) {
+            doMain(right);
+        }
         if (debugEnabled == true) {
             doDebug(s);
             doGetSystemProperty(s);
