@@ -35,7 +35,7 @@ This sction contains a list of commands, their usage, and description.
 | eval          | `eval=>...`.    |evalueates JavaScript thanks to javax and allows doing math.|
 | mathvar       | `mathvar=>op1,...`|sets the variable `op1` to the result of the javascript expression `...`|
 | dofile        | `dofile=>op1`.  | loads and executes the file `op1`.|
-| toggledebug   | `toggledebug=>true|false`|sets debug mod to true or false, such as `toggledebug=>true`|
+| toggledebug   | `toggledebug=>true|false` |sets debug mod to true or false, such as `toggledebug=>true` |
 
 As of now, creating functions is not possible, as they are hard-coded symbols within the interpreter.
 
