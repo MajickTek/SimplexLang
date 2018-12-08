@@ -5,3 +5,4 @@ debug=>listVarMap
 getsysprop=>os.name
 getsysprop=>os.version
 getsysprop=>all
+eval=>print=>hello

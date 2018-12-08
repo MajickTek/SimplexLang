@@ -26,7 +26,38 @@ public class Parser {
         if text equals op1 then do something with op2
          */
 
-        doMain(s); // allowing for recursion now, so parsing cmd=>op1=>op2 is possible
+         cmd = s.split(delimiterregex); //operator between command and parameter
+        String left = cmd[0];//command
+        String right = cmd[1];//parameter
+
+        if (left.equalsIgnoreCase(kwd.PRINT.toString())) {
+            System.out.println(right);
+        }
+
+        if (left.equalsIgnoreCase(kwd.PARSE.toString())) {
+            printTree();
+        } //debug, call with parse=>>
+
+        if (right.equalsIgnoreCase(kwd.NULL.toString())) {
+            System.out.println("NULL");
+        }
+        if (left.equalsIgnoreCase(kwd.SETVAR.toString())) {
+            String[] parameter = right.split(",");
+            VariableEngine.insert(parameter[0], parameter[1]);
+        }
+        if (left.equalsIgnoreCase(kwd.GETVAR.toString())) {
+            System.out.println(VariableEngine.getKeyValue(right));
+        }
+        
+        if (debugEnabled == true) {
+            doDebug(s);
+            doGetSystemProperty(s);
+        } else {
+            if (left.equalsIgnoreCase(kwd.DEBUG.toString())) {
+                System.err.println("DEBUG not enabled, ignoring: " + right);
+            }
+        }
+
     }
 
     private static void printTree() { // for debug purposes
@@ -67,40 +98,4 @@ public class Parser {
         }
     }
 
-    private static void doMain(String s) {
-        cmd = s.split(delimiterregex); //operator between command and parameter
-        String left = cmd[0];//command
-        String right = cmd[1];//parameter
-
-        if (left.equalsIgnoreCase(kwd.PRINT.toString())) {
-            System.out.println(right);
-        }
-
-        if (left.equalsIgnoreCase(kwd.PARSE.toString())) {
-            printTree();
-        } //debug, call with parse=>>
-
-        if (right.equalsIgnoreCase(kwd.NULL.toString())) {
-            System.out.println("NULL");
-        }
-        if (left.equalsIgnoreCase(kwd.SETVAR.toString())) {
-            String[] parameter = right.split(",");
-            VariableEngine.insert(parameter[0], parameter[1]);
-        }
-        if (left.equalsIgnoreCase(kwd.GETVAR.toString())) {
-            System.out.println(VariableEngine.getKeyValue(right));
-        }
-        if(left.equalsIgnoreCase(kwd.EVAL.toString())) {
-            doMain(right);
-        }
-        if (debugEnabled == true) {
-            doDebug(s);
-            doGetSystemProperty(s);
-        } else {
-            if (left.equalsIgnoreCase(kwd.DEBUG.toString())) {
-                System.err.println("DEBUG not enabled, ignoring: " + right);
-            }
-        }
-
-    }
 }
