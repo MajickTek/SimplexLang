@@ -33,6 +33,7 @@ This sction contains a list of commands, their usage, and description.
 | getsysprop.   | `getsysprop=>op1`|print system properties such as os.version. `all` prints all of them. requires DEBUG.|
 | getsysenv     | `getsysenv=>op1`|print system environment variable. System dependent, needs DEBUG enabled.|
 | eval          | `eval=>...`.    |evalueates JavaScript thanks to javax and allows doing math.|
+| mathvar       | `mathvar=>op1,...`|sets the variable `op1` to the result of the javascript expression `...`|
 
 As of now, creating functions is not possible, as they are hard-coded symbols within the interpreter.
 
