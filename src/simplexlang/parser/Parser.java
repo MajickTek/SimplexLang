@@ -24,8 +24,8 @@ public class Parser {
         <op1> => <op2>
         pseudocode:
         if text equals op1 then do something with op2
-         */ 
-        
+         */
+
         doMain(s); // allowing for recursion now, so parsing cmd=>op1=>op2 is possible
     }
 
@@ -36,35 +36,33 @@ public class Parser {
     }
 
     private static void doDebug(String s) {
-        
-        
+
         cmd = s.split(delimiterregex); //operator between command and parameter
         String left = cmd[0];//command
         String right = cmd[1];//parameter
         if (left.equalsIgnoreCase(kwd.DEBUG.toString())) {
-            if(right.equalsIgnoreCase("help")) {
+            if (right.equalsIgnoreCase("help")) {
                 System.out.println("listVarMap - List variables");
             }
             if (right.equalsIgnoreCase("listVarMap")) {
                 VariableEngine.showDebugDisplay();
             }
-            
 
         }
     }
 
     private static void doGetSystemProperty(String s) {
-        
+
         cmd = s.split(delimiterregex); //operator between command and parameter
         String left = cmd[0];//command
         String right = cmd[1];//parameter
-        if(left.equalsIgnoreCase(kwd.GETSYSTEMPROPERTY.toString())) {
+        if (left.equalsIgnoreCase(kwd.GETSYSTEMPROPERTY.toString())) {
             System.out.println(System.getProperty(right));
-            if(right.equalsIgnoreCase("all")) {
+            if (right.equalsIgnoreCase("all")) {
                 System.out.println(System.getProperties().toString());
             }
         }
-        if(left.equalsIgnoreCase(kwd.GETSYSTEMENV.toString())) {
+        if (left.equalsIgnoreCase(kwd.GETSYSTEMENV.toString())) {
             System.out.println(System.getenv(right));
         }
     }
@@ -100,8 +98,6 @@ public class Parser {
                 System.err.println("DEBUG not enabled, ignoring: " + right);
             }
         }
-        
-        
 
     }
 }
