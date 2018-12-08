@@ -30,7 +30,7 @@ This sction contains a list of commands, their usage, and description.
 | getvar        | `getvar=>op1`   | prints the variable op1                          |
 | debug         | `debug=>subcmd` | various based on the subcmd.                      |
 | NULL          |        `>`      | used as an parameter for commands that don't need any|
-| getsysprop.   | `getsysprop=>op1`|print system properties such as os.version. requires DEBUG to be enabled.|
+| getsysprop.   | `getsysprop=>op1`|print system properties such as os.version. `all` prints all of them. requires DEBUG.|
 | getsysenv     | `getsysenv=>op1`|print system environment variable. System dependent, needs DEBUG enabled.|
 As of now, creating functions is not possible, as they are hard-coded symbols within the interpreter.
 
