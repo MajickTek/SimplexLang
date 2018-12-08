@@ -15,6 +15,8 @@ public class Parser {
 
     private static String[] cmd;
     public static boolean debugEnabled = false;
+    private static Keywords kwd = null;
+    private static String delimiterregex = kwd.OPERATOR.toString();
 
     public static void parseLine(String s) {
         /*
@@ -22,9 +24,53 @@ public class Parser {
         <op1> => <op2>
         pseudocode:
         if text equals op1 then do something with op2
-         */ Keywords kwd = null;
-        String delimeterregex = kwd.OPERATOR.toString();
-        cmd = s.split(delimeterregex); //operator between command and parameter
+         */ 
+        
+        doMain(s); // allowing for recursion now, so parsing cmd=>op1=>op2 is possible
+    }
+
+    private static void printTree() { // for debug purposes
+        for (int i = 0; i < cmd.length; i++) {
+            System.out.println("\n" + cmd[i] + "\n");
+        }
+    }
+
+    private static void doDebug(String s) {
+        
+        
+        cmd = s.split(delimiterregex); //operator between command and parameter
+        String left = cmd[0];//command
+        String right = cmd[1];//parameter
+        if (left.equalsIgnoreCase(kwd.DEBUG.toString())) {
+            if(right.equalsIgnoreCase("help")) {
+                System.out.println("listVarMap - List variables");
+            }
+            if (right.equalsIgnoreCase("listVarMap")) {
+                VariableEngine.showDebugDisplay();
+            }
+            
+
+        }
+    }
+
+    private static void doGetSystemProperty(String s) {
+        
+        cmd = s.split(delimiterregex); //operator between command and parameter
+        String left = cmd[0];//command
+        String right = cmd[1];//parameter
+        if(left.equalsIgnoreCase(kwd.GETSYSTEMPROPERTY.toString())) {
+            System.out.println(System.getProperty(right));
+            if(right.equalsIgnoreCase("all")) {
+                System.out.println(System.getProperties().toString());
+            }
+        }
+        if(left.equalsIgnoreCase(kwd.GETSYSTEMENV.toString())) {
+            System.out.println(System.getenv(right));
+        }
+    }
+
+    private static void doMain(String s) {
+        cmd = s.split(delimiterregex); //operator between command and parameter
         String left = cmd[0];//command
         String right = cmd[1];//parameter
 
@@ -54,47 +100,8 @@ public class Parser {
                 System.err.println("DEBUG not enabled, ignoring: " + right);
             }
         }
+        
+        
 
-    }
-
-    private static void printTree() { // for debug purposes
-        for (int i = 0; i < cmd.length; i++) {
-            System.out.println("\n" + cmd[i] + "\n");
-        }
-    }
-
-    private static void doDebug(String s) {
-        Keywords kwd = null;
-        String delimeterregex = kwd.OPERATOR.toString();
-        cmd = s.split(delimeterregex); //operator between command and parameter
-        String left = cmd[0];//command
-        String right = cmd[1];//parameter
-        if (left.equalsIgnoreCase(kwd.DEBUG.toString())) {
-            if(right.equalsIgnoreCase("help")) {
-                System.out.println("listVarMap - List variables");
-            }
-            if (right.equalsIgnoreCase("listVarMap")) {
-                VariableEngine.showDebugDisplay();
-            }
-            
-
-        }
-    }
-
-    public static void doGetSystemProperty(String s) {
-        Keywords kwd = null;
-        String delimeterregex = kwd.OPERATOR.toString();
-        cmd = s.split(delimeterregex); //operator between command and parameter
-        String left = cmd[0];//command
-        String right = cmd[1];//parameter
-        if(left.equalsIgnoreCase(kwd.GETSYSTEMPROPERTY.toString())) {
-            System.out.println(System.getProperty(right));
-            if(right.equalsIgnoreCase("all")) {
-                System.out.println(System.getProperties().toString());
-            }
-        }
-        if(left.equalsIgnoreCase(kwd.GETSYSTEMENV.toString())) {
-            System.out.println(System.getenv(right));
-        }
     }
 }
