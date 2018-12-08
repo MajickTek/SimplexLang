@@ -58,12 +58,7 @@ public class Parser {
             System.out.println(VariableEngine.getKeyValue(right));
         }
         if (left.equalsIgnoreCase(kwd.EVAL.toString())) {
-            try {
-                
-                System.out.println(engine.eval(right));
-            } catch (ScriptException ex) {
-                Logger.getLogger(Parser.class.getName()).log(Level.SEVERE, null, ex);
-            }
+            System.out.println(doJSEval(right));
         }
         if (debugEnabled == true) {
             doDebug(s);
@@ -109,6 +104,16 @@ public class Parser {
         if (left.equalsIgnoreCase(kwd.GETSYSTEMENV.toString())) {
             System.out.println(System.getenv(right));
         }
+    }
+
+    private static String doJSEval(String input) {
+        try {
+            Object test = engine.eval(input);
+            return test.toString();
+        } catch (ScriptException ex) {
+            Logger.getLogger(Parser.class.getName()).log(Level.SEVERE, null, ex);
+        }
+        return "NULL";
     }
 
 
