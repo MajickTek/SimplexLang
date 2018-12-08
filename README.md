@@ -32,3 +32,8 @@ This sction contains a list of commands, their usage, and description.
 | NULL          |        `>`      | used as an parameter for commands that don't need any|
 
 As of now, creating functions is not possible, as they are hard-coded symbols within the interpreter.
+
+## Build Instructions
+Download and install the latest version of Netbeans IDE and put this folder into your projects folder. You may want to do File | Open project if it doesn't open automatically.
+
+the `git.sh` and `gitup.sh` files are for pushing directly to this repo. You will want to change those for use with a fork etc. The Netbeans project also has git configurations.
