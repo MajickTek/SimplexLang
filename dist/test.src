@@ -1,0 +1,11 @@
+setvar=>x,hello
+print=>test is complete
+getvar=>x
+debug=>listVarMap
+getsysprop=>os.name
+getsysprop=>os.version
+getsysprop=>all
+eval=>1+2
+setvar=>y,0
+mathvar=>y,2+2
+getvar=>y

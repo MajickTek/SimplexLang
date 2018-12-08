@@ -20,7 +20,9 @@ public enum Keywords { // helps me organize the main keywords, this is not defin
     GETSYSTEMPROPERTY("getsysprop"),
     GETSYSTEMENV("getsysenv"),
     EVAL("eval"),
-    MATHVAR("mathvar")
+    MATHVAR("mathvar"),
+    DOFILE("dofile"),
+    TOGGLEDEBUG("toggledebug")
     ;
 
     private final String text;

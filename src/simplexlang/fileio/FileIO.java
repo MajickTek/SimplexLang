@@ -65,7 +65,7 @@ public class FileIO {
         }
     }
 
-    private static void createTextFile(String filename, String data) throws UnsupportedEncodingException, FileNotFoundException, IOException {
+    public static void createTextFile(String filename, String data) throws UnsupportedEncodingException, FileNotFoundException, IOException {
         try (Writer writer = new BufferedWriter(new OutputStreamWriter(
                 new FileOutputStream(filename), "utf-8"))) {
             writer.write(data);

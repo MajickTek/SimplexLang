@@ -5,11 +5,13 @@
  */
 package simplexlang.parser;
 
+import java.io.IOException;
 import java.util.logging.Level;
 import java.util.logging.Logger;
 import javax.script.ScriptEngine;
 import javax.script.ScriptEngineManager;
 import javax.script.ScriptException;
+import simplexlang.fileio.FileIO;
 import simplexlang.variables.VariableEngine;
 
 /**
@@ -64,6 +66,21 @@ public class Parser {
             String[] parameter = right.split(",");
             String test = doJSEval(parameter[1]);
             VariableEngine.insert(parameter[0], test);
+        }
+        if(left.equalsIgnoreCase(kwd.DOFILE.toString())) {// mostly for argument usage
+            try {
+                FileIO.readFile(right);
+            } catch (IOException ex) {
+                Logger.getLogger(Parser.class.getName()).log(Level.SEVERE, null, ex);
+            }
+        }
+        if(left.equalsIgnoreCase(kwd.TOGGLEDEBUG.toString())) { // for arguments
+            if(right.equalsIgnoreCase("true")) {
+                debugEnabled = true;
+            }
+            if(right.equalsIgnoreCase("false")) {
+                debugEnabled = false;
+            }
         }
         if (debugEnabled == true) {
             doDebug(s);
