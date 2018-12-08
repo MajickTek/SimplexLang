@@ -69,9 +69,13 @@ public class Parser {
         String left = cmd[0];//command
         String right = cmd[1];//parameter
         if (left.equalsIgnoreCase(kwd.DEBUG.toString())) {
+            if(right.equalsIgnoreCase("help")) {
+                System.out.println("listVarMap - List variables");
+            }
             if (right.equalsIgnoreCase("listVarMap")) {
                 VariableEngine.showDebugDisplay();
             }
+            
 
         }
     }
