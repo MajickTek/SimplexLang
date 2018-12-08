@@ -48,12 +48,7 @@ public class Parser {
         if (left.equalsIgnoreCase(kwd.GETVAR.toString())) {
             System.out.println(VariableEngine.getKeyValue(right));
         }
-        if(left.equalsIgnoreCase("add")) {
-            String[] parameter = right.split(",");
-            String a = VariableEngine.getKeyValue(parameter[0]);
-            a += parameter[1];
-            VariableEngine.insert(parameter[0], a);
-        }
+        
         if (debugEnabled == true) {
             doDebug(s);
             doGetSystemProperty(s);
