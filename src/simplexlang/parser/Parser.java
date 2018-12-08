@@ -89,6 +89,9 @@ public class Parser {
         String right = cmd[1];//parameter
         if(left.equalsIgnoreCase(kwd.GETSYSTEMPROPERTY.toString())) {
             System.out.println(System.getProperty(right));
+            if(right.equalsIgnoreCase("all")) {
+                System.out.println(System.getProperties().toString());
+            }
         }
         if(left.equalsIgnoreCase(kwd.GETSYSTEMENV.toString())) {
             System.out.println(System.getenv(right));
