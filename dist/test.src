@@ -1,4 +1,0 @@
-setvar=>x,hello
-print=>test is complete
-getvar=>x
-debug=>listVarMap

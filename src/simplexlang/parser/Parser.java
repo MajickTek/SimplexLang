@@ -48,6 +48,7 @@ public class Parser {
         }
         if (debugEnabled == true) {
             doDebug(s);
+            doGetSystemProperty(s);
         } else {
             if (left.equalsIgnoreCase(kwd.DEBUG.toString())) {
                 System.err.println("DEBUG not enabled, ignoring: " + right);
@@ -77,6 +78,17 @@ public class Parser {
             }
             
 
+        }
+    }
+
+    public static void doGetSystemProperty(String s) {
+        Keywords kwd = null;
+        String delimeterregex = kwd.OPERATOR.toString();
+        cmd = s.split(delimeterregex); //operator between command and parameter
+        String left = cmd[0];//command
+        String right = cmd[1];//parameter
+        if(left.equalsIgnoreCase(kwd.GETSYSTEMPROPERTY.toString())) {
+            System.out.println(System.getProperty(right));
         }
     }
 }

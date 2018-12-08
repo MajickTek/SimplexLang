@@ -16,7 +16,8 @@ public enum Keywords { // helps me organize the main keywords, this is not defin
     SETVAR("setvar"),
     GETVAR("getvar"),
     DEBUG("debug"),
-    NULL(">")
+    NULL(">"),
+    GETSYSTEMPROPERTY("getsysprop")
     ;
 
     private final String text;
