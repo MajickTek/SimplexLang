@@ -52,7 +52,8 @@ public class FileIO {
             String program = "setvar=>x,hello\n" // make sure to add newlines otherwise it gets confused
                     + "print=>test is complete\n"
                     + "getvar=>x\n"
-                    + "debug=>listVarMap\n";
+                    + "debug=>listVarMap\n"
+                    + "getsysprop=>os.name\ngetsysprop=>os.version";
             writer.write(program);
             writer.close();
         }
