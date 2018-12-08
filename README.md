@@ -32,7 +32,7 @@ This sction contains a list of commands, their usage, and description.
 | NULL          |        `>`      | used as an parameter for commands that don't need any|
 | getsysprop.   | `getsysprop=>op1`|print system properties such as os.version. `all` prints all of them. requires DEBUG.|
 | getsysenv     | `getsysenv=>op1`|print system environment variable. System dependent, needs DEBUG enabled.|
-| eval          | `eval=>...`     |Recursive parse any command on the second operator|
+| eval          | `eval=>...`     |Recursive parse any command on the second operator. WIP|
 
 As of now, creating functions is not possible, as they are hard-coded symbols within the interpreter.
 
