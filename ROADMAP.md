@@ -76,6 +76,40 @@ int main(){
     printf("%d",lookup(t,5));
     return 0;
 }
+// from http://www.kaushikbaruah.com/posts/data-structure-in-c-hashmap/
 ~~~~
 
-Creating a C version would also require polishing up the repo to support the multiple projects.
+A String.split() could be implemented with this:
+http://source-code-share.blogspot.com/2014/07/implementation-of-java-stringsplit.html?m=1
+
+I might create a separate repo for the C version once it gets to a usable state.
+
+## Some snippets
+Generic proxy function:
+~~~~cpp
+#include <stdio.h>
+#include <functional>
+
+using result = std::function<std::string(std::string)>;
+
+template<class F>
+result proxy(F func) {
+  //some type-traits technologies based on func type
+}
+
+//---------------------------------------------------------
+double foo(double a) { /*...*/ }
+auto local_foo = proxy(foo);
+
+//use dlsym to define foo
+//this snippet is from https://stackoverflow.com/questions/3194434/c-c-dynamic-loading-of-functions-with-unknown-prototype
+~~~~
+
+~~~~cpp
+extern "C" int foo(char *bar) {
+    return realFoo(std::string(bar);
+}
+//call foo() from C code.
+
+//from https://stackoverflow.com/questions/199418/using-c-library-in-c-code
+~~~~
