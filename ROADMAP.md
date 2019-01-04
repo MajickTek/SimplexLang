@@ -105,6 +105,7 @@ auto local_foo = proxy(foo);
 //this snippet is from https://stackoverflow.com/questions/3194434/c-c-dynamic-loading-of-functions-with-unknown-prototype
 ~~~~
 
+using c++ in c
 ~~~~cpp
 extern "C" int foo(char *bar) {
     return realFoo(std::string(bar);
